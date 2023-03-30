@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+        </title>
+        <style>
+            body {
+                margin :0px ;
+                padding:0px;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id="mycanvas" width="600" height="400"></canvas>
+        <script>
+           var canvas=document.getElementById('mycanvas');
+           var context=canvas.getContext('2d'); 
+           
+           context.beginPath();
+           context.arc(200, 200, 120, 0, 2 * Math.PI, false);
+           context.fillStyle='white';
+           context.fill();
+           context.lineWidth=30;
+           context.strokeStyle='blue';
+           context.stroke();
+           context.beginPath();
+           context.moveTo(80, 200);
+           context.lineTo(320, 200);
+           context.stroke();
+           context.fillStyle='black';
+           context.fill();
+           context.font ='20px calibra ';
+           context.fillText('9', 50,200);
+           context.fillText('12', 200,50);
+           context.fillText('3', 350,200);
+           context.fillText('6', 200,350);
+
+setInterval(drawClock, 1);
+
+function drawClock() {
+    context.clearRect(canvas.width / 2 -150,canvas.height / 2 -60, 100,40);
+  var now = new Date();
+  var hours = now.getHours();
+  var minutes = now.getMinutes();
+  var seconds = now.getSeconds();
+  hours = hours % 12;
+  hours = hours ? hours : 12;
+  minutes = minutes < 10 ? "0" + minutes : minutes;
+  seconds = seconds < 10 ? "0" + seconds : seconds;
+
+  
+  context.fillStyle = "#000000";
+  context.font = "30px Arial";
+  context.fillText(
+    hours + ":" + minutes + ":" + seconds,
+    canvas.width / 2 -150,
+    canvas.height / 2 -30
+  );
+ 
+}
+
+        </script>
+    </body>
+</html>

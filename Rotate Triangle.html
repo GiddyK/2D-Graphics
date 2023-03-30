@@ -1,0 +1,45 @@
+<!DOCTYPE HTML> 
+<html> 
+<head> 
+<script type="text/javascript"> 
+// The action based function
+function drawShape(){ 
+ // get the canvas element using the DOM
+ var canvas = document.getElementById('mycanvas'); 
+ // Make sure we don't execute when canvas isn't supported
+ if (canvas.getContext){ 
+ // use getContext to use the canvas for drawing
+ var ctx = canvas.getContext('2d'); 
+ ctx.translate(300,300);//Move the canvas to 200 by 200 
+ //alert("width:"+canvas.width+"Height:"+canvas.height); 
+ ctx.save(); 
+ ctx.beginPath(); 
+ ctx.moveTo(0,0);//Relative to the new position 
+ ctx.lineTo(125,125); 
+ ctx.stroke(); 
+ ctx.fillStyle ='rgb('+(50*10)+','+(500-60*5)+',5)';//Set pixel colors 
+ ctx.fillRect(125,125,100,100);//Define the region to color 
+ ctx.strokeStyle ='rgb('+(20*10)+','+(500-60*5)+',5)';//Set pixel colors 
+ ctx.strokeRect(125,125,100,100);//Draw the outline 
+ ctx.save(); 
+ for (j=1; j<5; j++){ 
+ ctx.beginPath(); 
+ ctx.rotate(Math.PI*2/(6));//set the roatation 
+ ctx.moveTo(0,0); 
+ ctx.lineTo(125,125); 
+ ctx.stroke();//draw the rotated line 
+ ctx.fillRect(125,125,100,100);//fill the rotated pixels collors 
+ ctx.strokeRect(125,125,100,100); 
+ ctx.save();
+} 
+ ctx.restore(); 
+ }else { 
+ alert('You need Safari or Firefox 1.5+ to see this demo.'); 
+ } 
+}
+</script> 
+</head> 
+<body onload="drawShape();"> 
+ <canvas id="mycanvas" width="600" height="600"></canvas> 
+</body> 
+</html>

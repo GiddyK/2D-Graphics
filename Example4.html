@@ -1,0 +1,38 @@
+<!DOCTYPE HTML> 
+<html> 
+<head> 
+</head> 
+<body onLoad='drawShape();'> 
+ <canvas id="mycanvas" width="400" height="400"></canvas> 
+<script type="text/javascript"> 
+var canvas = document.getElementById('mycanvas'); 
+var ctx = canvas.getContext('2d'); 
+ 
+function drawShape(){ 
+ ctx.translate(200,200);//Move the canvas to 200 by 200 
+ ctx.save(); 
+ animate(); 
+ } 
+// The animating function 
+function animate(){ 
+ ctx.clearRect(0,0,400,400); // Creals the canvas to enable redrawing
+ ctx.translate(0,0); 
+ ctx.save(); 
+ ctx.beginPath(); 
+ ctx.rotate(Math.PI/(6));//set the roatation . You can cgane thsi to 18, 36, 72 etc for differeent
+ ctx.strokeStyle='red';//Set pixel colors 
+ //Change the point to (20,20) and (50,50) and enjoy the different animations
+ ctx.moveTo(0,0); 
+ ctx.lineTo(50,50); 
+ ctx.stroke();//draw the rotated line 
+ // Comment the lines below to be left with the lines only 
+ ctx.fillRect(50,50,50,50);//fill the rotated pixels colors 
+ //Change the width and the height of the rectangle to observe different animations
+ ctx.strokeRect(50,50,50,50);
+ ctx.save(); 
+ //Set the animation to called after different times
+setTimeout(animate,1000); 
+} 
+</script> 
+</body> 
+</html>

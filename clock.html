@@ -1,0 +1,35 @@
+<!DOCTYPE HTML> 
+<html> 
+<head> 
+</head> 
+<body onLoad='drawShape();'> 
+ <canvas id="mycanvas" width="800" height="400"></canvas> 
+<script type="text/javascript"> 
+var canvas=document.getElementById('mycanvas'); 
+var ctx = canvas.getContext('2d'); 
+ var x=0; 
+function drawShape(){ 
+ ctx.translate(100,100);//Set the Top Left corner of the translated canvas 
+ ctx.save(); 
+ animate(); //Call the recursive method
+ } 
+function animate(){ 
+ ctx.clearRect(0,0,800,800); // Clear the Current Rectangle
+ ctx.translate(0,0); 
+ ctx.save(); 
+ ctx.beginPath(); 
+ ctx.strokeStyle='red';//Set pixel colors 
+ ctx.moveTo(0,0);
+ ctx.fillRect(50+x,50,3,150);//fill the new Rectangle translated along the x- cordinate
+ ctx.strokeRect(50+x,50,3,150);//Change the width and the height of the rectangle to observe 
+ ctx.fillRect(50+x,50,50,50);//fill the new Rectangle translated along the x- cordinate
+ ctx.strokeRect(50+x,50,50,50);//Change the width and the height of the rectangle to observe
+ ctx.fillRect(40+x,200,20,2);//fill the new Rectangle translated along the x- cordinate
+ ctx.strokeRect(40+x,200,20,2);//Change the width and the height of the rectangle to observe
+ x+=1; // We increase the x position of the rectangle by 1 for every call to animation
+ 
+ setTimeout(animate,10); //Calls the method after every 10 milliseconds
+} 
+</script> 
+</body> 
+</html>
